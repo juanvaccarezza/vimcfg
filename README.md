@@ -9,3 +9,6 @@ El map leader es la coma (,).
 
 Para moverse entre las ventanas C-hjkl. (y si lo abriste desde el tmux se mueve bien entre las ventanas del tmux también gracias al .tmux.conf.
 
+Con el .vimrc debería bastar, este instala solo el Vundle y después dentro del vim ejecutar :PliginInstall y se baja todo.
+
+Sino ademas están subidos todos los plugines a este repo para poder bajar todo junto.
