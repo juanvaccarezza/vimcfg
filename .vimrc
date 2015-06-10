@@ -37,7 +37,7 @@
      " required!
      Bundle 'gmarik/vundle'
      " Support bundles
-     " Bundle 'jgdavey/tslime.vim'
+     Bundle 'benmills/vimux'
      " Bundle 'Shougo/vimproc.vim'
      Bundle 'ervandew/supertab'
      Bundle 'scrooloose/syntastic'
