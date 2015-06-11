@@ -263,6 +263,11 @@
     nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
     nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 
+    " Vimux commnads
+    map <Leader>vp :VimuxPromptCommand<CR>
+    map <Leader>vl :VimuxRunLastCommand<CR>
+    map <Leader>vq :VimuxCloseRunner<CR>
+
     " don't close buffers when you aren't displaying them
     set hidden
 
@@ -315,5 +320,7 @@
     " Align on pipes
     map <Leader>a<bar> :Align <bar><CR>
     " Prompt for align character
-    map <leader>ap :Align
+    map <leader>ap :Align 
+    " Align on spaces 
+    map <leader>a<space> :Align ws <CR> 
 " }}}
