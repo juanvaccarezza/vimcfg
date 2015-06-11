@@ -5,7 +5,7 @@ Hay que bajar todos los archivos al home.
 
 Modo de uso:
 
-El map leader es la coma (,).
+El map leader es la coma (,). si queres ver todos los mappings (atajos de teclado) usa :map y los lista.
 
 Para moverse entre las ventanas C-hjkl. (y si lo abriste desde el tmux se mueve bien entre las ventanas del tmux también gracias al .tmux.conf.
 
