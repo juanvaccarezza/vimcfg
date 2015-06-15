@@ -214,8 +214,8 @@
     set si "Smart indent
     set wrap "Wrap lines
     
-    " Use buffer words as default tab completion
-    let g:SuperTabDefaultCompletionType = '<c-x><c-p>'
+    " Use the context to seach for completion (the smartest :D)
+    let g:SuperTabDefaultCompletionType = "context"
 " }
 
 " Visual mode related {
