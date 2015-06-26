@@ -63,8 +63,11 @@
       Bundle 'godlygeek/tabular'
       Bundle 'michaeljsmith/vim-indent-object'
       Bundle 'rust-lang/rust.vim'
+      " Bundle 'phildawes/racer'
       " " Allow pane movement to jump out of vim into tmux
       Bundle 'christoomey/vim-tmux-navigator'
+      Bundle 'vim-voom/VOoM'
+      Bundle 'vimwiki/vimwiki'
       " " Custom bundles
       " if filereadable(expand("~/.vim.local/bundles.vim"))
       " source ~/.vim.local/bundles.vim
@@ -73,7 +76,10 @@
       call vundle#end()            " required
       filetype plugin indent on    " required
 " }
-
+" Vim-Wiki {
+    " Don't override tab for the tables
+    let g:vimwiki_table_mappings = 0
+" }
 " VIM user interface {{{
      " Set 7 lines to the cursor - when moving vertically using j/k
      set so=7
