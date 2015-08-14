@@ -68,6 +68,7 @@
       Bundle 'christoomey/vim-tmux-navigator'
       Bundle 'vim-voom/VOoM'
       Bundle 'vimwiki/vimwiki'
+      Bundle 'davidoc/taskpaper.vim'
       " " Custom bundles
       " if filereadable(expand("~/.vim.local/bundles.vim"))
       " source ~/.vim.local/bundles.vim
@@ -76,9 +77,15 @@
       call vundle#end()            " required
       filetype plugin indent on    " required
 " }
+" VIM racer configuration{
+    
+      " let g:racer_cmd = "/home/juan/datos/projects/Personal/rust/racer/target/release/racer"
+      " let $RUST_SRC_PATH="/home/juan/datos/projects/Personal/rust/rustc-1.0.0/src/"
+" }
+
 " Vim-Wiki {
     " Don't override tab for the tables
-    let g:vimwiki_table_mappings = 0
+      let g:vimwiki_table_mappings = 0
 " }
 " VIM user interface {{{
      " Set 7 lines to the cursor - when moving vertically using j/k
@@ -134,6 +141,19 @@
      nnoremap <leader>mo :set mouse=<cr>
      " Default to mouse mode on
      set mouse=a
+
+     " In normal mode or in insert mode, press Alt-j to move the current line down, or press Alt-k to move the current line up.
+     " After visually selecting a block of lines (for example, by pressing V then moving the cursor down), press Alt-j to move the whole block down, or press Alt-k to move the block up. 
+     execute "set <M-j>=\ej"
+     execute "set <M-k>=\ek"
+     execute "set <M-h>=\eh"
+     execute "set <M-l>=\el"
+     nnoremap <M-j> :m .+1<CR>==
+     nnoremap <M-k> :m .-2<CR>==
+     inoremap <M-j> <Esc>:m .+1<CR>==gi
+     inoremap <M-k> <Esc>:m .-2<CR>==gi
+     vnoremap <M-j> :m '>+1<CR>gv=gv
+     vnoremap <M-k> :m '<-2<CR>gv=gv
 " }
 
 "Colors and Fonts {
