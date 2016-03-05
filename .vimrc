@@ -1,5 +1,37 @@
+"Vundle
+    set nocompatible
+    filetype off
+    if !isdirectory(expand("~/.vim/bundle/Vundle.vim/.git"))
+            !git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    endif
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
+    " let Vundle manage Vundle
+    " required!
+    Bundle 'gmarik/vundle'
+    " Theme
+       Bundle 'vim-scripts/wombat256.vim'
+        try
+            colorscheme wombat256mod
+        catch
+        endtr 
 
-" General {
+    " Syntastic check syntax for almost everithing :P
+        Bundle 'scrooloose/syntastic'
+        let syntastic_auto_loc_list = 1
+
+    " Airline places the nice status bar on the bottom
+        Bundle 'vim-airline/vim-airline'
+        Bundle 'vim-airline/vim-airline-themes'
+        set laststatus=2 " Always show the airline
+        set noshowmode " Only shoy the mode on the airline
+        let g:airline#extensions#tabline#enabled = 1
+
+    " All of your Plugins must be added before the following line
+    call vundle#end()            " required
+    filetype plugin indent on    " required
+
+" General
      " use indentation for folds
      set foldmethod=indent
      set foldnestmax=5
@@ -14,7 +46,7 @@
      let mapleader = ","
      let g:mapleader = ","
      " Leader key timeout
-     set tm=2000
+     set tm=1000
      " Allow the normal use of "," by pressing it twice
      noremap ,, ,
      " Use par for prettier line formatting
@@ -23,70 +55,7 @@
      nnoremap Q <nop>
      " Exit Insert mode without getting Carpal Tunnel Syndrome.
      inoremap jk <esc>
-"}
 
-" Vundle {
-     set nocompatible
-     filetype off
-     if !isdirectory(expand("~/.vim/bundle/Vundle.vim/.git"))
-             !git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-     endif
-     set rtp+=~/.vim/bundle/Vundle.vim
-     call vundle#begin()
-     " let Vundle manage Vundle
-     " required!
-     Bundle 'gmarik/vundle'
-     " Support bundles
-     Bundle 'benmills/vimux'
-     " Bundle 'Shougo/vimproc.vim'
-     Bundle 'ervandew/supertab'
-     Bundle 'scrooloose/syntastic'
-     "Falta configurar algo para eliminar los buffers con el leader (ir a mirar lla página)
-     Bundle 'moll/vim-bbye' 
-     " Bundle 'nathanaelkane/vim-indent-guides'
-     " Bundle 'vim-scripts/gitignore'
-     " " Git
-     " Bundle 'tpope/vim-fugitive'
-     " Bundle 'int3/vim-extradite'
-
-     " Bars, panels, and files
-     Bundle 'scrooloose/nerdtree'
-     Bundle 'bling/vim-airline'
-     Bundle 'kien/ctrlp.vim'
-     "Bundle 'majutsushi/tagbar' "Plugin para ver los tags de un archivo por ahora
-     "no lo queremos
-
-     " Text manipulation
-      Bundle 'vim-scripts/Align'
-     " Bundle 'vim-scripts/Gundo' Do not install requires python suppor
-      Bundle 'tpope/vim-commentary'
-      Bundle 'godlygeek/tabular'
-      Bundle 'michaeljsmith/vim-indent-object'
-      Bundle 'rust-lang/rust.vim'
-      " Bundle 'phildawes/racer'
-      " " Allow pane movement to jump out of vim into tmux
-      Bundle 'christoomey/vim-tmux-navigator'
-      Bundle 'vim-voom/VOoM'
-      Bundle 'vimwiki/vimwiki'
-      Bundle 'davidoc/taskpaper.vim'
-      " " Custom bundles
-      " if filereadable(expand("~/.vim.local/bundles.vim"))
-      " source ~/.vim.local/bundles.vim
-      " endif
-      " All of your Plugins must be added before the following line
-      call vundle#end()            " required
-      filetype plugin indent on    " required
-" }
-" VIM racer configuration{
-    
-      " let g:racer_cmd = "/home/juan/datos/projects/Personal/rust/racer/target/release/racer"
-      " let $RUST_SRC_PATH="/home/juan/datos/projects/Personal/rust/rustc-1.0.0/src/"
-" }
-
-" Vim-Wiki {
-    " Don't override tab for the tables
-      let g:vimwiki_table_mappings = 0
-" }
 " VIM user interface {{{
      " Set 7 lines to the cursor - when moving vertically using j/k
      set so=7
@@ -97,6 +66,7 @@
      " Always show current position
      set ruler
      set number
+     set cursorline
      " Show trailing whitespace
      set list
      " But only interesting whitespace
@@ -127,13 +97,7 @@
      " No annoying sound on errors
      set noerrorbells
      set vb t_vb=
-     if &term =~ '256color'
-     " disable Background Color Erase (BCE) so that color schemes
-     " render properly when inside 256-color tmux and GNU screen.
-     " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-     set t_ut=
-     endif
-     " Force redraw
+    " Force redraw
      map <silent> <leader>r :redraw!<CR>
      " Turn mouse mode on
      nnoremap <leader>ma :set mouse=a<cr>
@@ -156,32 +120,19 @@
      vnoremap <M-k> :m '<-2<CR>gv=gv
 " }
 
+
 "Colors and Fonts {
-    Bundle 'vim-scripts/wombat256.vim'
+    if &term =~ '256color'
+    " disable Background Color Erase (BCE) so that color schemes
+    " render properly when inside 256-color tmux and GNU screen.
+    " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+    set t_ut=
+    endif
     try
-        colorscheme wombat256mod
+       colorscheme wombat256mod
     catch
     endtry
-    " Enable syntax highlighting
-    " syntax enable
-    " Adjust signscolumn and syntastic to match wombat
-    hi! link SignColumn LineNr
-    hi! link SyntasticErrorSign ErrorMsg
-    hi! link SyntasticWarningSign WarningMsg
-    " Use pleasant but very visible search hilighting
-    hi Search ctermfg=white ctermbg=173 cterm=none guifg=#ffffff guibg=#e5786d
-    hi! link Visual Search
-
-    " Enable filetype plugins
-    filetype plugin on
-    filetype indent on
-
-    " Match wombat colors in nerd tree
-    hi Directory guifg=#8ac6f2
-
-    " Searing red very visible cursor
-    hi Cursor guibg=red
-
+    syntax on
     " Use same color behind concealed unicode characters
     hi clear Conceal
 
@@ -189,6 +140,13 @@
     set guicursor=n-v-c:block-Cursor
     set guicursor+=n-v-c:blinkon0
     set t_Co=256
+
+    " Searing red very visible cursor
+    hi Cursor guibg=red
+
+    " Use pleasant but very visible search hilighting
+    hi Search ctermfg=white ctermbg=173 cterm=none guifg=#ffffff guibg=#e5786d
+    hi! link Visual Search
 
     " Set utf8 as standard encoding and en_US as the standard language
     set encoding=utf8
@@ -198,55 +156,24 @@
 
 "}
 
-" Files, backups and undo {
-    " Turn backup off, since most stuff is in Git anyway...
-    set nobackup
-    set nowb
-    set noswapfile
-
-    " Source the vimrc file after saving it
-    augroup sourcing
-    autocmd!
-    autocmd bufwritepost .vimrc source $MYVIMRC
-    augroup END
-
-    " Open file prompt with current path
-    nmap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
-
-    " Fuzzy find files
-    nnoremap <silent> <Leader><space> :CtrlP<CR>
-    let g:ctrlp_max_files=0
-    let g:ctrlp_show_hidden=1
-    let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git)$' }
-" }
-
 " Text, tab and indent related {
     " Use spaces instead of tabs
     set expandtab
-    
+
     " Be smart when using tabs ;)
     set smarttab
-    
+
     " 1 tab == 4 spaces
     set shiftwidth=4
     set tabstop=4
-    
+
     " Linebreak on 500 characters
     set lbr
     set tw=500
     set ai "Auto indent
     set si "Smart indent
     set wrap "Wrap lines
-    
-    " Use the context to seach for completion (the smartest :D)
-    let g:SuperTabDefaultCompletionType = "context"
-" }
 
-" Visual mode related {
-    " Visual mode pressing * or # searches for the current selection
-    " Super useful! From an idea by Michael Naumann
-    vnoremap <silent> * :call VisualSelection('f', '')<CR>
-    vnoremap <silent> # :call VisualSelection('b', '')<CR>
 " }
 
 " Moving around, tabs, windows and buffers {
@@ -280,18 +207,6 @@
     nmap <leader>sk :leftabove new<CR>
     nmap <leader>sj :rightbelow new<CR>
 
-    " Manually create key mappings (to avoid rebinding C-\)
-    let g:tmux_navigator_no_mappings = 1
-    nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
-    nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
-    nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
-    nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
-
-    " Vimux commnads
-    map <Leader>vp :VimuxPromptCommand<CR>
-    map <Leader>vl :VimuxRunLastCommand<CR>
-    map <Leader>vq :VimuxCloseRunner<CR>
-
     " don't close buffers when you aren't displaying them
     set hidden
 
@@ -299,52 +214,21 @@
     nnoremap <leader>bp :bp<cr>
     nnoremap <leader>bn :bn<cr>
 
-    " delete buffer without closing pane
-    noremap <leader>bd :Bd<cr>
-
-    " fuzzy find buffers
-    noremap <leader>b<space> :CtrlPBuffer<cr>
 " }
 
-" Status line {
-    " Always show the status line
-    set laststatus=2
-" }
+" Files, backups and undo {
+    " Turn backup off, since most stuff is in Git anyway...
+    set nobackup
+    set nowb
+    set noswapfile
 
-" Spell checking {
-    " Pressing ,ss will toggle and untoggle spell checking
-    map <leader>ss :setlocal spell!<cr>
-" }
+    " Source the vimrc file after saving it
+    augroup sourcing
+    autocmd!
+    autocmd bufwritepost .vimrc source $MYVIMRC
+    augroup END
 
-" NERDTree {
-    " Close nerdtree after a file is selected
-    let NERDTreeQuitOnOpen = 1
-    function! IsNERDTreeOpen()
-      return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
-    endfunction
-    function! ToggleFindNerd()
-      if IsNERDTreeOpen()
-        exec ':NERDTreeToggle'
-      else
-        exec ':NERDTreeFind'
-      endif
-    endfunction
-    " If nerd tree is closed, find current file, if open, close it
-    nmap <silent> <leader>f <ESC>:call ToggleFindNerd()<CR>
-    nmap <silent> <C-s> <ESC>:call ToggleFindNerd()<CR>
-" }
+    " Open file prompt with current path
+    nmap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
 
-"Alignment {{{
-    " Stop Align plugin from forcing its mappings on us
-    let g:loaded_AlignMapsPlugin=1
-    " Align on equal signs
-    map <Leader>a= :Align =<CR>
-    " Align on commas
-    map <Leader>a, :Align ,<CR>
-    " Align on pipes
-    map <Leader>a<bar> :Align <bar><CR>
-    " Prompt for align character
-    map <leader>ap :Align 
-    " Align on spaces 
-    map <leader>a<space> :Align ws <CR> 
-" }}}
+" }
