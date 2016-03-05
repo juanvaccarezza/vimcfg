@@ -77,8 +77,18 @@
         let g:ctrlp_max_files=0
         let g:ctrlp_show_hidden=1
         let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git)$' }
-         " fuzzy find buffers
+        " Fuzzy find buffers
         noremap <leader>b<space> :CtrlPBuffer<cr>
+    "Tabular makes aligments and tabulations easy
+        Bundle 'godlygeek/tabular'
+        "Calling Tabularize remove_leading_spaces alings to left
+        AddTabularPipeline! remove_leading_spaces /^ /
+                  \ map(a:lines, "substitute(v:val, '^ *', '', '')")
+        noremap <leader>tl :Tabularize remove_leading_spaces<CR>
+        noremap <leader>t= :Tabularize /=\zs<CR>
+        noremap <leader>t: :Tabularize /:\zs<CR>
+        noremap <leader>t, :Tabularize /,<CR>
+        noremap <leader>t<bar> :Tabularize /<bar><CR>
 
     " All of your Plugins must be added before the following line
     call vundle#end()            " required
