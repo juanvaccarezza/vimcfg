@@ -14,11 +14,14 @@
         try
             colorscheme wombat256mod
         catch
-        endtr 
+        endtr
+    "Supertab completes with tab while inserting
+        Bundle 'ervandew/supertab'
+        " Use the context to seach for completion (the smartest :D)
+        let g:SuperTabDefaultCompletionType = "context"
 
     " Syntastic check syntax for almost everithing :P
         Bundle 'scrooloose/syntastic'
-        let syntastic_auto_loc_list = 1
 
     " Airline places the nice status bar on the bottom
         Bundle 'vim-airline/vim-airline'
