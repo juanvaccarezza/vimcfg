@@ -49,7 +49,6 @@
         noremap <leader>bd :Bd<CR>
     " Syntastic check syntax for almost everithing :P
         Bundle 'scrooloose/syntastic'
-
     " Airline places the nice status bar on the bottom
         Bundle 'vim-airline/vim-airline'
         Bundle 'vim-airline/vim-airline-themes'
@@ -57,6 +56,21 @@
         set noshowmode " Only shoy the mode on the airline
         let g:airline#extensions#tabline#enabled = 1
 
+    "NERDTree shows a file system navigator
+        Bundle 'scrooloose/nerdtree'
+        " returns true iff is NERDTree open/active
+        function! IsNERDTreeOpen()
+            return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+        endfunction
+        " If nerd tree is closed, find current file, if open, close it
+        function! ToggleFindNerd()
+            if IsNERDTreeOpen()
+                exec ':NERDTreeToggle'
+            else
+                exec ':NERDTreeFind'
+            endif
+         endfunction
+         nmap <silent> <leader>nt <ESC>:call ToggleFindNerd()<CR>
     " All of your Plugins must be added before the following line
     call vundle#end()            " required
     filetype plugin indent on    " required
