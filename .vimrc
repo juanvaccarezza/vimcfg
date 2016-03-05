@@ -55,7 +55,6 @@
         set laststatus=2 " Always show the airline
         set noshowmode " Only shoy the mode on the airline
         let g:airline#extensions#tabline#enabled = 1
-
     "NERDTree shows a file system navigator
         Bundle 'scrooloose/nerdtree'
         " returns true iff is NERDTree open/active
@@ -71,6 +70,16 @@
             endif
          endfunction
          nmap <silent> <leader>nt <ESC>:call ToggleFindNerd()<CR>
+    "CtrlP finds files and buffers
+        Bundle 'kien/ctrlp.vim'
+        " Fuzzy find files
+        nnoremap <silent> <Leader><space> :CtrlP<CR>
+        let g:ctrlp_max_files=0
+        let g:ctrlp_show_hidden=1
+        let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git)$' }
+         " fuzzy find buffers
+        noremap <leader>b<space> :CtrlPBuffer<cr>
+
     " All of your Plugins must be added before the following line
     call vundle#end()            " required
     filetype plugin indent on    " required
