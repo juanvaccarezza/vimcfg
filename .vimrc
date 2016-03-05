@@ -135,18 +135,6 @@
      " Default to mouse mode on
      set mouse=a
 
-     " In normal mode or in insert mode, press Alt-j to move the current line down, or press Alt-k to move the current line up.
-     " After visually selecting a block of lines (for example, by pressing V then moving the cursor down), press Alt-j to move the whole block down, or press Alt-k to move the block up. 
-     execute "set <M-j>=\ej"
-     execute "set <M-k>=\ek"
-     execute "set <M-h>=\eh"
-     execute "set <M-l>=\el"
-     nnoremap <M-j> :m .+1<CR>==
-     nnoremap <M-k> :m .-2<CR>==
-     inoremap <M-j> <Esc>:m .+1<CR>==gi
-     inoremap <M-k> <Esc>:m .-2<CR>==gi
-     vnoremap <M-j> :m '>+1<CR>gv=gv
-     vnoremap <M-k> :m '<-2<CR>gv=gv
 " }
 
 
