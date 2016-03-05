@@ -82,8 +82,6 @@
     "Tabular makes aligments and tabulations easy
         Bundle 'godlygeek/tabular'
         "Calling Tabularize remove_leading_spaces alings to left
-        AddTabularPipeline! remove_leading_spaces /^ /
-                  \ map(a:lines, "substitute(v:val, '^ *', '', '')")
         noremap <leader>tl :Tabularize remove_leading_spaces<CR>
         noremap <leader>t= :Tabularize /=\zs<CR>
         noremap <leader>t: :Tabularize /:\zs<CR>
