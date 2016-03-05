@@ -1,41 +1,3 @@
-"Vundle
-    set nocompatible
-    filetype off
-    if !isdirectory(expand("~/.vim/bundle/Vundle.vim/.git"))
-            !git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-    endif
-    set rtp+=~/.vim/bundle/Vundle.vim
-    call vundle#begin()
-    " let Vundle manage Vundle
-    " required!
-    Bundle 'gmarik/vundle'
-    " Theme
-       Bundle 'vim-scripts/wombat256.vim'
-        try
-            colorscheme wombat256mod
-        catch
-        endtr
-    "Supertab completes with tab while inserting
-        Bundle 'ervandew/supertab'
-        " Use the context to seach for completion (the smartest :D)
-        let g:SuperTabDefaultCompletionType = "context"
-    "Bbye closes the buffers without modify the windows layout
-        Bundle 'moll/vim-bbye'
-        noremap <leader>bd :Bd<cr>
-    " Syntastic check syntax for almost everithing :P
-        Bundle 'scrooloose/syntastic'
-
-    " Airline places the nice status bar on the bottom
-        Bundle 'vim-airline/vim-airline'
-        Bundle 'vim-airline/vim-airline-themes'
-        set laststatus=2 " Always show the airline
-        set noshowmode " Only shoy the mode on the airline
-        let g:airline#extensions#tabline#enabled = 1
-
-    " All of your Plugins must be added before the following line
-    call vundle#end()            " required
-    filetype plugin indent on    " required
-
 " General
      " use indentation for folds
      set foldmethod=indent
@@ -60,6 +22,45 @@
      nnoremap Q <nop>
      " Exit Insert mode without getting Carpal Tunnel Syndrome.
      inoremap jk <esc>
+
+"Vundle
+    set nocompatible
+    filetype off
+    if !isdirectory(expand("~/.vim/bundle/Vundle.vim/.git"))
+            !git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    endif
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
+    " let Vundle manage Vundle
+    " required!
+    Bundle 'gmarik/vundle'
+    " Theme
+       Bundle 'vim-scripts/wombat256.vim'
+        try
+            colorscheme wombat256mod
+        catch
+        endtr
+    "Supertab completes with tab while inserting
+        Bundle 'ervandew/supertab'
+        " Use the context to seach for completion (the smartest :D)
+        let g:SuperTabDefaultCompletionType = "context"
+    "Bbye closes the buffers without modify the windows layout
+        Bundle 'moll/vim-bbye'
+        noremap <leader>bd :Bd<CR>
+    " Syntastic check syntax for almost everithing :P
+        Bundle 'scrooloose/syntastic'
+
+    " Airline places the nice status bar on the bottom
+        Bundle 'vim-airline/vim-airline'
+        Bundle 'vim-airline/vim-airline-themes'
+        set laststatus=2 " Always show the airline
+        set noshowmode " Only shoy the mode on the airline
+        let g:airline#extensions#tabline#enabled = 1
+
+    " All of your Plugins must be added before the following line
+    call vundle#end()            " required
+    filetype plugin indent on    " required
+
 
 " VIM user interface {{{
      " Set 7 lines to the cursor - when moving vertically using j/k
