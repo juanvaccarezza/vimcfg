@@ -19,7 +19,9 @@
         Bundle 'ervandew/supertab'
         " Use the context to seach for completion (the smartest :D)
         let g:SuperTabDefaultCompletionType = "context"
-
+    "Bbye closes the buffers without modify the windows layout
+        Bundle 'moll/vim-bbye'
+        noremap <leader>bd :Bd<cr>
     " Syntastic check syntax for almost everithing :P
         Bundle 'scrooloose/syntastic'
 
