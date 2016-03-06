@@ -87,13 +87,17 @@
         noremap <leader>t: :Tabularize /:\zs<CR>
         noremap <leader>t, :Tabularize /,<CR>
         noremap <leader>t<bar> :Tabularize /<bar><CR>
-
+    "Commentary comments on code
+        Bundle 'tpope/vim-commentary'
+    "Vimwiki has your own wiki on the disk with links and format.
+        Bundle 'vimwiki/vimwiki'
+    "Taskpaper GTD based on the taskpaper for mak
+        Bundle 'davidoc/taskpaper.vim'
     " All of your Plugins must be added before the following line
     call vundle#end()            " required
     filetype plugin indent on    " required
 
-
-" VIM user interface {{{
+" VIM user interface 
      " Set 7 lines to the cursor - when moving vertically using j/k
      set so=7
      " Turn on the WiLd menu
@@ -143,10 +147,7 @@
      " Default to mouse mode on
      set mouse=a
 
-" }
-
-
-"Colors and Fonts {
+"Colors and Fonts 
     if &term =~ '256color'
     " disable Background Color Erase (BCE) so that color schemes
     " render properly when inside 256-color tmux and GNU screen.
@@ -179,9 +180,7 @@
     " Use Unix as the standard file type
     set ffs=unix,dos,mac
 
-"}
-
-" Text, tab and indent related {
+" Text, tab and indent related 
     " Use spaces instead of tabs
     set expandtab
 
@@ -199,9 +198,7 @@
     set si "Smart indent
     set wrap "Wrap lines
 
-" }
-
-" Moving around, tabs, windows and buffers {
+" Moving around, tabs, windows and buffers 
     " Treat long lines as break lines (useful when moving around in them)
     nnoremap j gj
     nnoremap k gk
@@ -239,9 +236,7 @@
     nnoremap <leader>bp :bp<cr>
     nnoremap <leader>bn :bn<cr>
 
-" }
-
-" Files, backups and undo {
+" Files, backups and undo 
     " Turn backup off, since most stuff is in Git anyway...
     set nobackup
     set nowb
@@ -256,4 +251,3 @@
     " Open file prompt with current path
     nmap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
 
-" }
