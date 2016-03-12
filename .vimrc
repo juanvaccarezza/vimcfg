@@ -93,6 +93,9 @@
         Bundle 'vimwiki/vimwiki'
     "Taskpaper GTD based on the taskpaper for mak
         Bundle 'davidoc/taskpaper.vim'
+    "Fugitive git console commands wrapper
+        Bundle 'tpope/vim-fugitive'
+        set diffopt=vertical
     " All of your Plugins must be added before the following line
     call vundle#end()            " required
     filetype plugin indent on    " required
