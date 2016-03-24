@@ -96,6 +96,13 @@
     "Fugitive git console commands wrapper
         Bundle 'tpope/vim-fugitive'
         set diffopt=vertical
+    " Vimux sends and open tmux terminals
+        Bundle 'benmills/vimux'
+        map <Leader>vp :VimuxPromptCommand<CR>
+        map <Leader>vl :VimuxRunLastCommand<CR>
+        map <Leader>vq :VimuxCloseRunner<CR>   
+    " Allow pane movement to jump out of vim into tmux
+        Bundle 'christoomey/vim-tmux-navigator'
     "File detection for rust
         Bundle 'rust-lang/rust.vim'
     "Racer provides rust code completion in vim only loaded if racer is on the $PATH
@@ -103,7 +110,8 @@
             Bundle 'racer-rust/vim-racer'
             let g:racer_cmd = "racer"
         endif
-    " All of your Plugins must be added before the following line
+
+  " All of your Plugins must be added before the following line
     call vundle#end()            " required
     filetype plugin indent on    " required
 
