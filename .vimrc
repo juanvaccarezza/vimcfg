@@ -55,6 +55,7 @@
         set laststatus=2 " Always show the airline
         set noshowmode " Only shoy the mode on the airline
         let g:airline#extensions#tabline#enabled = 1
+        Bundle 'kalafut/vim-taskjuggler'
     "NERDTree shows a file system navigator
         Bundle 'scrooloose/nerdtree'
         " returns true iff is NERDTree open/active
