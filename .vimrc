@@ -92,6 +92,8 @@
         Bundle 'tpope/vim-commentary'
     "Vimwiki has your own wiki on the disk with links and format.
         Bundle 'vimwiki/vimwiki'
+        let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
+        let g:vimwiki_global_ext = 0
     "Taskpaper GTD based on the taskpaper for mak
         Bundle 'davidoc/taskpaper.vim'
     "Fugitive git console commands wrapper
