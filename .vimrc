@@ -40,15 +40,22 @@
             colorscheme wombat256mod
         catch
         endtr
-    "Supertab completes with tab while inserting
-        Bundle 'ervandew/supertab'
-        " Use the context to seach for completion (the smartest :D)
-        let g:SuperTabDefaultCompletionType = "context"
+    " YCM
+    Bundle 'Valloric/YouCompleteMe'
+    " Track the engine.
+    Plugin 'SirVer/ultisnips'
+    let g:UltiSnipsExpandTrigger = "<C-l>"
+    let g:UltiSnipsJumpForwardTrigger = "<C-j>"
+    let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
+
+    " Snippets are separated from the engine. Add this if you want them:
+    Plugin 'honza/vim-snippets'
     "Bbye closes the buffers without modify the windows layout
         Bundle 'moll/vim-bbye'
         noremap <leader>bd :Bd<CR>
     " Syntastic check syntax for almost everithing :P
         Bundle 'scrooloose/syntastic'
+        let g:syntastic_yaml_checkers=['yamllint']
     " Airline places the nice status bar on the bottom
         Bundle 'vim-airline/vim-airline'
         Bundle 'vim-airline/vim-airline-themes'
@@ -167,6 +174,12 @@
      nnoremap <leader>mo :set mouse=<cr>
      " Default to mouse mode on
      set mouse=a
+     " Sheare the clipboard with X
+     set clipboard=unnamedplus
+     " Add diff between buffer and file
+     command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis | wincmd p
+     map <Leader>do :DiffOrig<cr>
+     map <leader>dc :bd<cr>:diffoff!<cr>
 
 "Colors and Fonts 
     if &term =~ '256color'
